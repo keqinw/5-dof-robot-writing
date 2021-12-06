@@ -14,4 +14,6 @@ this project aim to use PPO control a 5 dof manipulator to draw lines in 3d spac
 1. run the 'PPO_trainner.py' to train the PPO agent. You also can test your agent by uncommenting the 'test()' funtion in main().
 2. the trained agent will be saved in 'result' folder. 
 3. run the 'robot_5dof.py' to generate the trajectory of manipulator, saved in 'action.npy'. 
-4.   
+4. connect to the manipulator, run the 'my_serial.py', enter 'python3 my_serial.py single back' in termianl to control the manipulator move to start position.
+5. run 'control.py' to control the manipulator move following the trajectroy in the 'action.npy'. 
+
