@@ -20,12 +20,12 @@ def train():
     env = gym.make('ur3-v0')
     model = PPO('MlpPolicy',env,verbose=1)
     model.learn(total_timesteps=300000)
-    model.save('../UJI-3D/result/ppo-ur3-3d-1206.zip')
+    model.save('../result/ppo.zip')
 
 def result():
     frames = []
     env = gym.make('ur3-v0')
-    model = PPO.load('../UJI-3D/result/ppo-ur3-3d-1206.zip')
+    model = PPO.load('../result/ppo.zip')
     
     for _ in range(10):
         obs = env.reset()
