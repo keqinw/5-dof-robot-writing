@@ -1,0 +1,144 @@
+<?xml version="1.0"?> 
+<robot name = "robot">
+	<!-- links section -->>
+	<link name = "base_link">
+		<inertial>
+			<origin xyz = "0 0 0" />
+			<mass value = "0.5" />
+			<inertia ixx = "0.5" iyy = "0.5" izz = "0.5" ixy = "0" ixz = "0" iyz = "0" />
+		</inertial>
+		<visual>
+			<origin xyz = "0 0 0" />
+			<geometry>
+				<box size = "0.05 0.05 0.01" />
+			</geometry>
+			<material name = "gray A">
+				<color rgba = "0.1 0.1 0.1 1" />
+			</material>
+		</visual>
+	</link>
+	<link name = "link1">
+		<inertial>
+			<origin xyz = "0 0 0.01" />
+			<mass value = "0.5" />
+			<inertia ixx = "0.5" iyy = "0.5" izz = "0.5" ixy = "0" ixz = "0" iyz = "0" />
+		</inertial>
+		<visual>
+			<origin xyz = "0 0 0.01" />
+			<geometry>
+				<cylinder radius = "0.01" length = "0.02"  />
+			</geometry>
+			<material name = "gray B">
+				<color rgba = "0.3 0.3 0.3 1" />
+			</material>
+		</visual>
+	</link>
+    
+	<!-- joints section -->>
+	<joint name = "joint1" type = "continuous">
+		<parent link = "base_link" />
+		<child link = "link1" />
+		<origin xyz = "0 0 0" />
+		<axis xyz = "0 0 1" />
+	</joint>
+
+    <link name = "link2">
+		<inertial>
+			<origin xyz = "0 0 0.05" />
+			<mass value = "0.5" />
+			<inertia ixx = "0.5" iyy = "0.5" izz = "0.5" ixy = "0" ixz = "0" iyz = "0" />
+		</inertial>
+		<visual>
+			<origin xyz = "0 0 0.05" />
+			<geometry>
+				<cylinder radius = "0.01" length = "0.1"  />
+			</geometry>
+			<material name = "gray C">
+				<color rgba = "0.5 0.5 0.5 1" />
+			</material>
+		</visual>
+	</link>
+
+	<joint name = "joint2" type = "continuous">
+		<parent link = "link1" />
+		<child link = "link2" />
+		<origin xyz = "0 0 0.02" />
+		<axis xyz = "0 1 0" />
+		<!-- <dynamics damping ="0.002" /> -->
+	</joint>
+
+	<link name = "link3">
+		<inertial>
+			<origin xyz = "0 0 0.05" />
+			<mass value = "0.5" />
+			<inertia ixx = "0.5" iyy = "0.5" izz = "0.5" ixy = "0" ixz = "0" iyz = "0" />
+		</inertial>
+		<visual>
+			<origin xyz = "0 0 0.05" />
+			<geometry>
+				<cylinder radius = "0.01" length = "0.1"  />
+			</geometry>
+			<material name = "gray D">
+				<color rgba = "0.7 0.7 0.7 1" />
+			</material>
+		</visual>
+	</link>
+
+	<joint name = "joint3" type = "continuous">
+		<parent link = "link2" />
+		<child link = "link3" />
+		<origin xyz = "0 0 0.1" />
+		<axis xyz = "0 1 0" />
+	</joint>
+
+	<link name = "link4">
+		<inertial>
+			<origin xyz = "0 0 0.075" />
+			<mass value = "0.5" />
+			<inertia ixx = "0.5" iyy = "0.5" izz = "0.5" ixy = "0" ixz = "0" iyz = "0" />
+		</inertial>
+		<visual>
+			<origin xyz = "0 0 0.075" />
+			<geometry>
+				<cylinder radius = "0.01" length = "0.15"  />
+			</geometry>
+			<material name = "gray E">
+				<color rgba = "0.9 0.9 0.9 1" />
+			</material>
+		</visual>
+	</link>
+
+	<joint name = "joint4" type = "continuous">
+		<parent link = "link3" />
+		<child link = "link4" />
+		<origin xyz = "0 0 0.1" rpy="0 1.5708 0" />
+		<axis xyz = "0 1 0" />
+	</joint>
+
+	<link name = "link5">
+		<inertial>
+			<origin xyz = "0 0 0.01" />
+			<mass value = "0.01" />
+			<inertia ixx = "0.5" iyy = "0.5" izz = "0.5" ixy = "0" ixz = "0" iyz = "0" />
+		</inertial>
+		<visual>
+			<origin xyz = "0 0 0.01" />
+			<geometry>
+				<cylinder radius = "0.01" length = "0.01"  />
+			</geometry>
+			<material name = "gray F">
+				<color rgba = "0 0 0 1" />
+			</material>
+		</visual>
+	</link>
+
+	<joint name = "joint5" type = "fixed">
+		<parent link = "link4" />
+		<child link = "link5" />
+		<origin xyz = "0 0 0.15" rpy="0 0 0" />
+		<axis xyz = "0 1 0" />
+	</joint>
+	
+	
+
+</robot>

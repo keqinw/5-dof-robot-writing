@@ -1,0 +1,28 @@
+<?xml version="1.0"?> 
+<robot name="simplegoal">
+    <!-- Colors --> 
+    <material name="green">
+        <color rgba="0 0.925 0 1"/>
+    </material>
+
+    <!-- Goal -->
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <sphere radius="0.005"/>
+                <origin rpy="0 0 0" xyz="0 0 0.005"/>
+            </geometry>
+            <material name="green"/>
+        </visual>
+        <!-- <collision> 
+             <geometry> 
+                <sphere radius="0.05"/>
+                <origin rpy="0 0 0" xyz="0 0 0.05"/>
+            </geometry>
+        </collision>  -->
+        <inertial> 
+            <mass value="0"/>
+            <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+        </inertial> 
+    </link>
+</robot>
