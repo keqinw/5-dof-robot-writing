@@ -12,14 +12,6 @@ import pybullet as p
 def save2gif(frames):
     imageio.mimsave('../UJI-3D/result/ur3_5dof.gif', frames, 'GIF', duration=0.03)
 
-def trans(ori_path,panning_x,panning_y,strech_x,strech_y):
-    ori_path = ori_path.astype(float)
-    # path = copy.deepcopy(ori_path)
-    
-    x = (ori_path[:,0]+panning_x)/strech_x
-    y = (-ori_path[:,1]+panning_y)/strech_y
-    return x,y
-
 # rectangular path 
 xs = list(np.linspace(0.1,0.2,20)) + [0.2 for i in range(20)] + list(np.linspace(0.2,0.1,20)) + [0.1 for i in range(20)]
 ys = [-0.04 for i in range(20)] + list(np.linspace(-0.04,0.04,20)) + [0.04 for i in range(20)] + list(np.linspace(0.04,-0.04,20))
@@ -34,11 +26,6 @@ xs = 0.15 + r * np.cos(theta)
 ys = 0 + r * np.sin(theta)
 zs = [0.14 for i in range(len(xs))]
 
-# path = np.load('../UJI-3D/result/path.npy')
-# ys,xs = trans(path[:-10],-128,-300,2560,2560)
-# xs = -xs
-# ys.reverse()
-# xs.reverse()
 plt.plot(xs,ys,'-')
 plt.title('origin path')
 plt.axis('equal')
@@ -63,11 +50,10 @@ for x,y,z in zip(xs,ys,zs):
         if not done:
             action,_state=model.predict(obs,deterministic=True)
             obs, _, done, _ = env.evaluate_step(action)
-            # actions.append([-obs[-3]]+list(obs[-2:])+[obs[-1]+obs[-2]-np.pi/2])
 
             image = env.render(224)
             frames.append(image)
-            # frames.append(np.vstack((origin_image,env.render()[:,:,0:3])))
+            
         if done:
             result_x.append(obs[3])
             result_y.append(obs[4])
